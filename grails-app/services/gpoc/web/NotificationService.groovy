@@ -11,4 +11,8 @@ class NotificationService {
     def notify(String message) {
         brokerMessagingTemplate.convertAndSend "/topic/hello", message
     }
+
+    def scheduledNotify() {
+        notify("Enviado pelo quartz")
+    }
 }

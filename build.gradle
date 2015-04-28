@@ -32,6 +32,7 @@ ext {
     gradleWrapperVersion = project.gradleWrapperVersion
     camelVersion = "2.15.1"
     springSecVersion = "4.0.1.RELEASE"
+    quartzVersion = "2.2.1"
 }
 
 assets {
@@ -66,6 +67,7 @@ dependencies {
 
     compile "org.apache.camel:camel-spring-boot:${camelVersion}"
     compile "org.apache.camel:camel-groovy:${camelVersion}"
+    compile "org.quartz-scheduler:quartz:${quartzVersion}"
 
     compile "org.springframework.security:spring-security-config:${springSecVersion}"
     compile "org.springframework.security:spring-security-messaging:${springSecVersion}"
