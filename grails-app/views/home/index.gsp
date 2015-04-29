@@ -21,8 +21,14 @@
                 var client = Stomp.over(socket);
 
                 client.connect({}, function() {
-                    client.subscribe("/topic/hello", function(message) {
+                    client.subscribe("/user/queue/hello", function(message) {
                       $('.bottom-right').notify({
+                         message: { text: message.body }, type: 'blackgloss'
+                       }).show();
+                    });
+                    client.subscribe("/topic/hello", function(message) {
+                      //console.log(message)
+                      $('.top-right').notify({
                          message: { text: message.body }, type: 'blackgloss'
                        }).show();
                     });
@@ -157,6 +163,7 @@
                               <input id="pubInput" type="text" class="form-control" placeholder="Mensagem para envio">
                               <button id="pubButton" class="btn btn-primary">Publicar</button>
                               <div class='notifications bottom-right'></div>
+                              <div class='notifications top-right'></div>
                           </div>
                       </div>
                   </div>

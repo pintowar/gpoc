@@ -8,11 +8,11 @@ class NotificationService {
 
     SimpMessagingTemplate brokerMessagingTemplate
 
-    def notify(String message) {
-        brokerMessagingTemplate.convertAndSend "/topic/hello", message
+    def notify(Map message) {
+        brokerMessagingTemplate.convertAndSendToUser message.to, "/queue/hello", message.body
     }
 
     def scheduledNotify() {
-        notify("Enviado pelo quartz")
+        brokerMessagingTemplate.convertAndSend "/topic/hello", "Enviado pelo Quartz"
     }
 }

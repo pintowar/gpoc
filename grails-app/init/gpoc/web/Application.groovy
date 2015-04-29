@@ -13,9 +13,9 @@ class Application extends GrailsAutoConfiguration {
         return new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                //from("timer:foo?period=2s")
-                from("file:///${System.properties['user.home']}/camelDir/in")
-                .transform { (Math.random() > 0.5 ? "alpha" : "omega") }
+                from("timer:foo?period=2s")
+                //from("file:///${System.properties['user.home']}/camelDir/in")
+                .transform { [to: "fulano", body: (Math.random() > 0.5 ? "alpha" : "omega")] }
                 .to("bean://notificationService?method=notify")
             }
         };
